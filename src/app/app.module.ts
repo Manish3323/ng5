@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { MastersComponent } from './masters/masters.component';
+
 
 
 
@@ -16,7 +18,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+	MastersComponent
   ],
   imports: [
     BrowserModule,

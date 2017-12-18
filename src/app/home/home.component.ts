@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output ,EventEmitter } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-animations:[
+  outputs:['onHide'],
+  animations:[
     trigger('goals',[
         transition('*=>*',[
            // query(':enter',style({opacity:0},{optional:true})),
@@ -31,24 +32,36 @@ animations:[
 })
 export class HomeComponent implements OnInit {
 itemCount:number;
-btnText:string='add item';
-goalText:string;
-goals=['1','2','3'];
-    
+btnText:string='login';
+authentic:boolean;	
+userName:string;
+password:string;
+
+authenticUser={
+	userName:"manish",
+	password:"123"
+}    
 
   constructor() { }
 
   ngOnInit() {
-    this.itemCount = this.goals.length;
       
   }
-    addItem(){
-        this.goals.push(this.goalText);
-        this.goalText="";
-        this.itemCount = this.goals.length;
-    }
-    removeItem(index){
-        this.goals.splice(index,1);
-        this.itemCount = this.goals.length;
-    }
+	
+	@Output() 
+	 onHide:EventEmitter<boolean> = new EventEmitter<boolean>();
+    
+    auth($event){
+   		
+		if(this.userName === this.authenticUser.userName && 
+		   this.password === this.authenticUser.password)
+			{
+				console.log("is valid")
+				 this.onHide.emit(true);
+			}
+		else
+			{ console.log("is not valid")
+				 this.onHide.emit(false);
+			}
+    	}
 }
