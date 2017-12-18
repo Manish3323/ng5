@@ -9,7 +9,7 @@ export class AppComponent {
   	title = 'app';
   	authentic:boolean=false;
 	constructor(private renderer: Renderer){}
-	tmpListener:<any>;
+	/*tmpListener:<any>;
 	@ViewChild('input') ulEl: ElementRef;
 
 	ngOnInit() {
@@ -25,7 +25,7 @@ export class AppComponent {
   
 	 ngOnDestroy() {
 		this.tmpListener();
-	}
+	}*/
 	auth(val: boolean) {
 		console.log("inside 2")
 		this.authentic=val;
